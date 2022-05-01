@@ -1,0 +1,95 @@
+header {
+  background-color: white;
+}
+.header {
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+    color: black;
+  }
+
+  &__search {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.popular__container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__popular {
+  width: 15%;
+  height: 20rem;
+  object-fit: contain;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 3rem;
+  margin: 3rem;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.popular {
+  &__meta-text {
+    display: flex;
+  }
+
+  &__text-container {
+    display: flex;
+    flex-direction: row;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+
+    &-text {
+      font-size: 1.5rem;
+    }
+  }
+  &__section-title {
+    color: yellow;
+    font-size: 4rem;
+    padding-inline: 3rem;
+  }
+  &__title {
+    color: yellow;
+    font-size: 2rem;
+  }
+
+  &__image {
+    border-radius: 10px;
+    width: 100%;
+    height: auto;
+
+    &-container {
+      object-fit: contain;
+    }
+  }
+
+  &__ingredients-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 15%;
+  }
+
+  &__instructions {
+    &-container {
+      width: 55%;
+      flex-wrap: wrap;
+    }
+    &-text {
+      line-height: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+}

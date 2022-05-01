@@ -1,0 +1,118 @@
+@font-face {
+  font-family: "Spectral";
+  src: url("../../assets/Spectral/Spectral-Regular.ttf") format("truetype");
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Spectral";
+  src: url("../../assets/Spectral/Spectral-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+
+html {
+  font-family: "Spectral";
+}
+
+header {
+  background-color: white;
+}
+.header {
+  &__wrapper {
+    display: flex;
+    justify-content: space-around;
+    color: black;
+  }
+
+  &__search {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.hero {
+  display: flex;
+  justify-content: space-around;
+  padding: 3rem;
+  margin: 3rem;
+  align-items: center;
+  border: 1px solid white;
+  border-radius: 10px;
+}
+
+.cocktail {
+  &__meta-text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+  }
+  &__info {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+
+    &-text {
+      font-size: 1.5rem;
+    }
+  }
+
+  &__title {
+    color: yellow;
+    font-size: 4rem;
+  }
+  &__image-container {
+    padding-right: 3rem;
+  }
+  &__image {
+    border-radius: 10px;
+    width: 30rem;
+    height: auto;
+  }
+
+  &__ingredients-container {
+    display: flex;
+    flex-direction: column;
+
+    width: 15%;
+  }
+
+  &__instructions {
+    &-container {
+      width: 55%;
+      flex-wrap: wrap;
+    }
+    &-text {
+      line-height: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  margin: 0;
+  padding-bottom: 1rem;
+}
+
+button {
+  height: 4rem;
+  width: 15rem;
+  box-sizing: content-box;
+  font-size: 1.5rem;
+  background-color: black;
+  color: white;
+  border-radius: 10px;
+}
+
+form {
+  display: flex;
+  align-items: center;
+}
