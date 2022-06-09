@@ -1,18 +1,15 @@
-header {
-  background-color: white;
-}
-.header {
-  &__wrapper {
-    display: flex;
-    justify-content: space-around;
-    color: black;
-  }
+// .header {
+//   &__wrapper {
+//     display: flex;
+//     justify-content: space-around;
 
-  &__search {
-    display: flex;
-    justify-content: space-between;
-  }
-}
+//   }
+
+//   &__search {
+//     display: flex;
+//     justify-content: space-between;
+//   }
+// }
 
 .popular__container {
   display: flex;
@@ -46,6 +43,7 @@ header {
     display: flex;
     flex-direction: row;
   }
+
   &__info {
     display: flex;
     flex-direction: column;
@@ -55,13 +53,15 @@ header {
       font-size: 1.5rem;
     }
   }
+
   &__section-title {
-    color: yellow;
+    color: #F9BE87;
     font-size: 4rem;
     padding-inline: 3rem;
   }
+
   &__title {
-    color: yellow;
+    color: #F9BE87;
     font-size: 2rem;
   }
 
@@ -87,6 +87,7 @@ header {
       width: 55%;
       flex-wrap: wrap;
     }
+
     &-text {
       line-height: 2rem;
       font-size: 1.5rem;

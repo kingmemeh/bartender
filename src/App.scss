@@ -1,13 +1,15 @@
 html {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 600% 600%;
+  background: linear-gradient(-45deg, #575F75, #171E2F);
+  /* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
+  background-size: 300% 100%;
+  background-attachment: fixed;
   animation: gradient 15s ease infinite;
   height: 100vh;
   color: white;
   font-family: "Spectral";
 }
 
-@keyframes gradient {
+/* @keyframes gradient {
   0% {
     background-position: 0% 50%;
   }
@@ -17,4 +19,4 @@ html {
   100% {
     background-position: 0% 50%;
   }
-}
+} */

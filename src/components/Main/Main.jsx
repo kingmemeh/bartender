@@ -1,84 +1,109 @@
 import axios from 'axios';
-import { Component } from 'react';
+import { Component, useState, useEffect } from 'react';
+import NavBar from '../NavBar/NavBar';
 import Popular from '../Popular/Popular'
+import SearchForm from '../SearchForm/SearchForm';
+import { Paper, Box, Grid, Card, Typography } from '@mui/material'
 import "./Main.scss"
+import { display, minHeight } from '@mui/system';
 
-class Main extends Component {
-    state = {
-        cocktailData: [],
-        
-    }   
-//     componentDidMount() {
-//     axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-//       .then(res =>  this.setState({ cocktailData: res.data.drinks[0] }))
-//       .catch(err => console.log(err))  
-//   }
+export default function Main() {
+    // state = {
+    //     cocktailData: [],
 
-componentDidMount(){
-    axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php')
-    .then(response => {
-        this.setState({
-            cocktailData: response.data.drinks[0]
-        })
-        console.log(response.data)
-    })}
+    // }
+    const [cocktailData, setCocktailData] = useState([])
 
-// axios.get('www.thecocktaildb.com/api/json/v2/9973533/popular.php')
-//     .then(res => this.setState({ cocktailData: res.data.drinks[0] }))
-//       .catch(err => console.log(err))
+    async function fetchCocktailData() {
+        const request = await axios.get('https://www.thecocktaildb.com/api/json/v1/1/random.php');
+        setCocktailData(request.data.drinks[0])
+        return request;
+    }
 
-render () {
+    useEffect(() => {
+        fetchCocktailData();
+    }, [])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        fetchCocktailData()
+        console.log(cocktailData)
+
+    }
+
+
     return (
-        this.state.cocktailData ?
         <>
-        <header className='header__wrapper'>
-            <div >
-                <h1>Bartender</h1>
-            </div>
-                <form action="submit"><button type='submit'> Random</button></form>
-        
-        </header>
-        <section className='hero'>
-            <div className='cocktail__image-container'>
-            <img className="cocktail__image"src={this.state.cocktailData.strDrinkThumb} alt={this.state.cocktailData.strDrink}></img>
-            {/* <img className="cocktail__image" src={'https://cf.ltkcdn.net/cocktails/images/orig/200804-2121x1414-cocktails.jpg'}/> */}
-            </div >
-            <div className='cocktail__text-container'>
-                <h2 className='cocktail__title'>{this.state.cocktailData.strDrink}</h2>
-                <div className='cocktail__meta-text'>
-                    <div className='cocktail__info'>
-                        <h2>Cocktail Info</h2>
-                        
-                        <p className="cocktail__info-text">Cocktail Glass: {this.state.cocktailData.strGlass} </p>
-                    </div>
-                    
-                    <div>
-                        <h2>Ingredients</h2>
-                        <ul className="cocktail__ingredients-container">
-                            <li className="cocktail__info-text">{this.state.cocktailData.strIngredient1}</li>
-                            <li className="cocktail__info-text">{this.state.cocktailData.strIngredient2}</li>
-                            <li className="cocktail__info-text">{this.state.cocktailData.strIngredient3}</li>
-                            <li className="cocktail__info-text">{this.state.cocktailData.strIngredient4}</li>
-                            <li className="cocktail__info-text">{this.state.cocktailData.strIngredient5}</li>
-                        </ul>
-                    </div>
-                    
-                            <div className='cocktail__instructions-container'>
+            <NavBar random={handleSubmit} />
+            <Box
+                m={2}
+            >
+                <Paper
+                    sx={{ backgroundColor: "#17386e" }}>
+                    <Grid
+                        container
+                        spacing={2}
+                        alignItems='center'
+                    >
+                        {/* <section className='hero'> */}
+                        <Grid
+                            container
+                            item xs={12} md={4}
+                        >
+                            <div className='hero__image-container'>
+                                <h2 className='hero__header'>{cocktailData.strDrink}</h2>
+                                <img className="hero__image" src={cocktailData.strDrinkThumb} alt={cocktailData.strDrink}></img>
+                            </div >
+                        </Grid>
+                        <Grid
+                            container alignItems="flexstart" xs={12} sm={12} md={8}
+                            direction={{ xs: 'row', md: 'column' }}
+                            px={3}
+
+
+                        >
+                            <Grid
+                                item xs
+                                alignItems='stretch'
+                            >
+                                <h2>Cocktail Info</h2>
+                                <p className="hero__text--body">Cocktail Glass: {cocktailData.strGlass} </p>
+                            </Grid>
+                            <Grid
+                                item xs
+                                variant="outlined"
+                                alignItems='stretch'
+                            >
+                                <h2>Ingredients</h2>
+                                <ul className="hero__text--list">
+                                    <li className="hero__text--body">{cocktailData.strIngredient1}</li>
+                                    <li className="hero__text--body">{cocktailData.strIngredient2}</li>
+                                    <li className="hero__text--body">{cocktailData.strIngredient3}</li>
+
+                                </ul>
+                            </Grid>
+
+                            <Grid
+                                item xs
+                                variant="outlined"
+                                alignItems='stretch'
+                            >
                                 <h2>Instructions</h2>
-                                <p className='cocktail__instructions-text'>{this.state.cocktailData.strInstructions} </p>
-                            </div>
-                </div>
-            </div>
-                 
-                
-        </section>
-         <Popular/>  
-        {/* <button className="button" type="submit">RANDOMIZER</button> */}
+                                <p className='hero__text--body'>{cocktailData.strInstructions}</p>
+                            </Grid>
+
+                        </Grid>
+                    </Grid>
+                </Paper>
+            </Box>
+            <SearchForm />
+
+
+
+
         </>
-        :
-        <h3>We fucked up....</h3>
     )
 }
-}
 
-export default Main
+
+
